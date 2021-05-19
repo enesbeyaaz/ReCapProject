@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Business": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}

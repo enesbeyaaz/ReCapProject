@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 using Core.Utilities.Results;
 using Business.Constants;
+using FluentValidation;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 
 namespace Business.Concrete
 {
@@ -20,20 +23,17 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice>0)
-            {
+            ValidationTool.Validate(new CarValidator(), car);
+
                 _carDal.Add(car);
                 return new SuccessResult(Messages.CarAdded);
-            }
-            else
-            {
-                return new ErrorResult ("Daily Price 0 dan büyük olmalı.");
-            }
+            
+            
         }
 
-        public IResult Delete(int id)
+        public IResult Delete(Car car)
         {
-            _carDal.Delete(new Car {Id = id });
+            _carDal.Delete(car);
 
             return new SuccessResult(Messages.CarDeleted);
         }

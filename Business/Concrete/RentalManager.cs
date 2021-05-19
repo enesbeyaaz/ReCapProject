@@ -34,9 +34,9 @@ namespace Business.Concrete
 
         }
 
-        public IResult Delete(int id)
+        public IResult Delete(Rental rental)
         {
-            _rentalDal.Delete(new Rental { Id =id});
+            _rentalDal.Delete(rental);
             return new SuccessResult(Messages.RentalDeleted);
         }
 

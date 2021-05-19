@@ -12,7 +12,7 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        private EfColorDal efColorDal;
+       
 
         IColorDal _colorDal;
 
@@ -28,9 +28,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorAdded);
         }
 
-        public IResult Delete(int id)
+        public IResult Delete(Color color)
         {
-            _colorDal.Delete(new Color { ColorId=id});
+            _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDeleted);
         }
 

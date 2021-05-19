@@ -27,9 +27,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAdded);
         }
 
-        public IResult Delete(int id)
+        public IResult Delete(Brand brand)
         {
-            _brandDal.Delete(new Brand { BrandId = id });
+            _brandDal.Delete(brand);
             return new SuccessResult(Messages.BrandDeleted);
         }
 
